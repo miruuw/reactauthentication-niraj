@@ -1,35 +1,43 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { TextInput, StyleSheet } from 'react-native'
+import React from 'react';
+import { View, StyleSheet, Text, TextInput } from 'react-native';
 
 const FormInput = props => {
-
-  const { placeholder, label, error } = props
-
+  const { placeholder, label, error } = props;
   return (
-    <View>
-      <View style={{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: 5
-      }}>
+    <>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          marginBottom: 5,
+        }}
+      >
         <Text style={{ fontWeight: 'bold' }}>{label}</Text>
+        {error ? (
+          <Text style={{
+            color: 'red', 
+            fontSize: 12,
+            backgroundColor: 'yellow',
+            borderRadius: 5,
+            padding: 3
+          }}>{error}</Text>
+        ) : null}
       </View>
-      <TextInput {...props} placeholder={placeholder} style={styles.input} caretColor="red" />
-    </View>
-  )
-}
+      <TextInput {...props} placeholder={placeholder} style={styles.input} />
+    </>
+  );
+};
 
 const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
-    borderColor: "#1b1b33",
+    borderColor: '#1b1b33',
     height: 40,
     borderRadius: 8,
-    fontSize: 14,
+    fontSize: 16,
     paddingLeft: 10,
-    marginBottom: 20
-  }
-})
+    marginBottom: 20,
+  },
+});
 
-export default FormInput
+export default FormInput;
